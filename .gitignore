@@ -1,0 +1,7 @@
+# CLion
+CMakeLists.txt
+cmake-build-debug
+.idea
+
+# Swap
+*.swp
