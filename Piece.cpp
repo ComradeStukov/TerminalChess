@@ -41,7 +41,7 @@ Piece* Piece::pieceCheck(coord pos)
 
 string King::getName()
 {
-    return Piece::getName() + "king";
+    return Piece::getName() + "King";
 }
 
 Piece* King::pieceCheck(coord pos)
@@ -61,7 +61,7 @@ char King::getSymbol()
 
 std::string Rook::getName()
 {
-    return Piece::getName() + "rook";
+    return Piece::getName() + "Rook";
 }
 
 Piece* Rook::pieceCheck(coord pos)
@@ -83,7 +83,7 @@ char Rook::getSymbol()
 
 std::string Bishop::getName()
 {
-    return Piece::getName() + "bishop";
+    return Piece::getName() + "Bishop";
 }
 
 Piece* Bishop::pieceCheck(coord pos)
@@ -106,7 +106,7 @@ char Bishop::getSymbol()
 
 std::string Queen::getName()
 {
-    return Piece::getName() + "queen";
+    return Piece::getName() + "Queen";
 }
 
 Piece* Queen::pieceCheck(coord pos)
@@ -131,7 +131,7 @@ char Queen::getSymbol()
 
 std::string Knight::getName()
 {
-    return Piece::getName() + "knight";
+    return Piece::getName() + "Knight";
 }
 
 Piece* Knight::pieceCheck(coord pos)
@@ -154,7 +154,7 @@ char Knight::getSymbol()
 
 std::string Pawn::getName()
 {
-    return Piece::getName() + "pawn";
+    return Piece::getName() + "Pawn";
 }
 
 Piece* Pawn::pieceCheck(coord pos)
