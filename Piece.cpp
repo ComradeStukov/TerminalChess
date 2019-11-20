@@ -149,7 +149,7 @@ Piece* Knight::pieceCheck(coord pos)
 
 char Knight::getSymbol()
 {
-    return m_side ? 'c' : 'C';
+    return m_side ? 'n' : 'N';
 }
 
 std::string Pawn::getName()

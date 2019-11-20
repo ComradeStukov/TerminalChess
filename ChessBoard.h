@@ -1,6 +1,7 @@
 #ifndef _CHESS_BOARD_H_
 #define _CHESS_BOARD_H_
 
+#include <iostream>
 #include <string>
 
 #include "Piece.h"
@@ -47,13 +48,10 @@ public:
         return side ? std::string("Black") : std::string("White");
     }
 public:
-    ChessBoard();
+    ChessBoard(std::ostream& ostr=std::cout);
     ~ChessBoard();
     void resetBoard();
-    void submitMove(std::string drc, std::string dst);
-    Piece* dryrunMove(coord pos, Piece* piece);
-    bool checkCheck(int side);
-    bool mateCheck(int side);
+    void submitMove(std::string src, std::string dst);
     inline Piece* getPiece(coord pos)
     {
         return m_board[pos.first][pos.second];
@@ -63,15 +61,16 @@ public:
         m_board[pos.first][pos.second] = piece;
         return;
     }
-    inline King* getKing(int side)
-    {
-        return m_king[side];
-    }
     inline Piece* getPassantPawn(int side)
     {
         return m_passant_pawn[side];
     }
-    void drawBoard();
+    void drawBoard(bool simple=false);
+private:
+    Piece* dryrunMove(coord pos, Piece* piece);
+    bool castlingCheck(Piece *king, coord king_dst);
+    bool checkCheck(int side);
+    bool mateCheck(int side);
 
 public:
     static const int SIDE = 2;
@@ -82,8 +81,9 @@ private:
     int m_winner;
     int m_side;
     Piece* m_board[ROW][COL];
-    King* m_king[SIDE];
+    Piece* m_king[SIDE];
     Piece* m_passant_pawn[SIDE];
+    std::ostream& m_ostr;
 };
 
 #endif

@@ -6,7 +6,8 @@
 
 using namespace std;
 
-ChessBoard::ChessBoard()
+ChessBoard::ChessBoard(ostream& ostr):
+    m_ostr(ostr)
 {
     memset(m_board, 0, sizeof(m_board));
     resetBoard();
@@ -70,7 +71,7 @@ void ChessBoard::resetBoard()
     setPiece(strCoord("H7"), new Pawn(this, BLACK, strCoord("H7")));
 
     // TODO: assign King pointers.
-    cout << "A new chess game is started!" << endl;
+    m_ostr << "A new chess game is started!" << endl;
     return;
 }
 
@@ -78,54 +79,56 @@ void ChessBoard::submitMove(const std::string src, const std::string dst)
 {
     if (m_winner != UNKNOWN)
     {
-        cout << "The game is already over" << endl;
+        m_ostr << "The game is already over" << endl;
         return;
     }
 
     coord s = strCoord(src), d = strCoord(dst);
     if (!checkCoord(s))
     {
-        cout << src << " is not a valid position!" << endl;
+        m_ostr << src << " is not a valid position!" << endl;
         return;
     }
     else if (!checkCoord(d))
     {
-        cout << dst << " is not a valid position!" << endl;
+        m_ostr << dst << " is not a valid position!" << endl;
         return;
     }
 
     Piece* piece = getPiece(s);
     if (!piece)
     {
-        cout << "There is no piece at position " << src << "!" << endl;
+        m_ostr << "There is no piece at position " << src << "!" << endl;
         return;
     }
     if (piece->getSide() != m_side)
     {
-        cout << "It is not " << getPlayer(piece->getSide()) << "’s turn to move!" << endl;
+        m_ostr << "It is not " << getPlayer(piece->getSide()) << "'s turn to move!" << endl;
         return;
     }
 
-    // TODO: Add castling judgement here.
-    Piece* obj = dryrunMove(d, piece);
-    if (!obj)
+    if (!castlingCheck(piece, d))
     {
-        cout << piece->getName() << " cannot move to " << dst << "!" << endl;
-        return;
-    }
+        Piece *obj = dryrunMove(d, piece);
+        if (!obj)
+        {
+            m_ostr << piece->getName() << " cannot move to " << dst << "!" << endl;
+            return;
+        }
 
-    cout << piece->getName() << " moves from " << src << " to " + dst;
-    if (obj != piece)
-    {
-        cout << " taking " << obj->getName();
-        setPiece(obj->getPos(), nullptr);
-        delete obj;
+        m_ostr << piece->getName() << " moves from " << src << " to " + dst;
+        if (obj != piece)
+        {
+            m_ostr << " taking " << obj->getName();
+            setPiece(obj->getPos(), nullptr);
+            delete obj;
+        }
+        setPiece(d, piece);
+        piece->setPos(d);
+        piece->setMoved(true);
+        setPiece(s, nullptr);
+        m_ostr << endl;
     }
-    setPiece(d, piece);
-    piece->setPos(d);
-    piece->setMoved(true);
-    setPiece(s, nullptr);
-    cout << endl;
 
     // drawBoard();
 
@@ -143,16 +146,44 @@ void ChessBoard::submitMove(const std::string src, const std::string dst)
     if (check && mate)
     {
         m_winner = 1 - m_side;
-        cout << getPlayer(m_side) << " is in checkmate" << endl;
+        m_ostr << getPlayer(m_side) << " is in checkmate" << endl;
     }
     else if (check)
-        cout << getPlayer(m_side) << " is in check" << endl;
+        m_ostr << getPlayer(m_side) << " is in check" << endl;
     else if (mate)
     {
         m_winner = 1 - m_side;
-        cout << getPlayer(m_side) << " is in stalemate" << endl;
+        m_ostr << getPlayer(m_side) << " is in stalemate" << endl;
     }
 
+    return;
+}
+
+void ChessBoard::drawBoard(bool simple)
+{
+    if (!simple)
+    {
+        m_ostr << "  A B C D E F G H  " << endl;
+        m_ostr << " +-+-+-+-+-+-+-+-+ " << endl;
+        for (int r = ROW - 1; r >= 0; r--)
+        {
+            m_ostr << (char) ('1' + r);
+            for (int c = 0; c < COL; c++)
+                m_ostr << '|' << (!getPiece(make_pair(r, c)) ? ' ' : getPiece(make_pair(r, c))->getSymbol());
+            m_ostr << '|' << (char) ('1' + r) << endl;
+            m_ostr << " +-+-+-+-+-+-+-+-+ " << endl;
+        }
+        m_ostr << "  A B C D E F G H  " << endl;
+    }
+    else
+    {
+        for (int r = ROW - 1; r >= 0; r--)
+        {
+            for (int c = 0; c < COL; c++)
+                m_ostr << (!getPiece(make_pair(r, c)) ? '.' : getPiece(make_pair(r, c))->getSymbol());
+            m_ostr << endl;
+        }
+    }
     return;
 }
 
@@ -188,10 +219,52 @@ Piece* ChessBoard::dryrunMove(coord dst, Piece* piece)
     return obj ? obj : piece;
 }
 
+
+bool ChessBoard::castlingCheck(Piece *king, coord king_dst)
+{
+    if (king != m_king[m_side] ||
+        king_dst.first != king->getPos().first ||
+        abs(king_dst.second - king->getPos().second) != 2 ||
+        king->getMoved())
+        return false;
+    int d = king_dst.second > king->getPos().second ? 1 : -1;
+    int r = king->getPos().first, c = king->getPos().second + d;
+    while (0 < c && c < COL - 1)
+    {
+        if (getPiece(make_pair(r, c)))
+            return false;
+        c += d;
+    }
+    Piece* rook = getPiece(make_pair(r, c));
+    if (!rook || rook->getMoved())
+        return false;
+    Piece* p;
+    for (r = 0; r < ROW; r++)
+        for (c = 0; c < COL; c++)
+            if ((p = getPiece(make_pair(r, c))) && p->getSide() == 1 - m_side)
+                for (int i = 0; i < 3; i++)
+                    if (p->pieceCheck(make_pair(king->getPos().first, king->getPos().second + i * d)))
+                        return false;
+    coord king_src = king->getPos(), rook_src = rook->getPos(), rook_dst = king->getPos();
+    rook_dst.second = rook_dst.second + d;
+
+    setPiece(king_dst, king);
+    king->setPos(king_dst);
+    king->setMoved(true);
+    setPiece(king_src, nullptr);
+
+    setPiece(rook_dst, rook);
+    rook->setPos(rook_dst);
+    rook->setMoved(true);
+    setPiece(rook_src, nullptr);
+
+    return true;
+}
+
 bool ChessBoard::checkCheck(int side)
 {
-    coord tar = getKing(side)->getPos();
-    // cout << side << " " << tar.first << " " << tar.second << endl;
+    coord tar = m_king[side]->getPos();
+    // m_ostr << side << " " << tar.first << " " << tar.second << endl;
     Piece* p;
     for (int r = 0; r < ROW; r++)
         for (int c = 0; c < COL; c++)
@@ -219,20 +292,4 @@ bool ChessBoard::mateCheck(int side)
                         if (dryrunMove(make_pair(i, j), p))
                             return false;
     return true;
-}
-
-void ChessBoard::drawBoard()
-{
-    cout << " |A B C D E F G H| " << endl;
-    cout << "-------------------" << endl;
-    for (int r = ROW - 1; r >= 0; r --)
-    {
-        cout << (char)('1' + r);
-        for (int c = 0; c < COL; c ++)
-            cout << '|' << (!getPiece(make_pair(r, c)) ? ' ' : getPiece(make_pair(r, c))->getSymbol());
-        cout << '|' << (char)('1' + r) << endl;
-        cout << "-------------------" << endl;
-    }
-    cout << " |A B C D E F G H| " << endl;
-    return;
 }
