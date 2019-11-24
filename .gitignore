@@ -5,3 +5,14 @@ cmake-build-debug
 
 # Swap
 *.swp
+
+# Local Library
+libs
+
+# Binary
+chess
+gamecli
+gameui
+
+# Mac
+*.dSYM

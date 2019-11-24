@@ -1,0 +1,1158 @@
+/Users/chentingyu/Programme/Cpp/Source/CW/Cpp_CW3/mcslab_3_tc2819/cmake-build-debug/game_cli
+A new chess game is started!
+====================
+  New Game Started
+====================
+
+Current Player: White
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|r|n|b|q|k|b|n|r|8
+ +-+-+-+-+-+-+-+-+
+7|p|p|p|p|p|p|p|p|7
+ +-+-+-+-+-+-+-+-+
+6| | | | | | | | |6
+ +-+-+-+-+-+-+-+-+
+5| | | | | | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P|P|P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+F2 F4
+
+White's Pawn moves from F2 to F4
+
+Current Player: Black
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|r|n|b|q|k|b|n|r|8
+ +-+-+-+-+-+-+-+-+
+7|p|p|p|p|p|p|p|p|7
+ +-+-+-+-+-+-+-+-+
+6| | | | | | | | |6
+ +-+-+-+-+-+-+-+-+
+5| | | | | | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | |P| | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+D7 D5
+
+Black's Pawn moves from D7 to D5
+
+Current Player: White
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|r|n|b|q|k|b|n|r|8
+ +-+-+-+-+-+-+-+-+
+7|p|p|p| |p|p|p|p|7
+ +-+-+-+-+-+-+-+-+
+6| | | | | | | | |6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | |P| | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+F4 F3
+
+White's Pawn cannot move to F3!
+
+Current Player: White
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|r|n|b|q|k|b|n|r|8
+ +-+-+-+-+-+-+-+-+
+7|p|p|p| |p|p|p|p|7
+ +-+-+-+-+-+-+-+-+
+6| | | | | | | | |6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | |P| | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+F4 F5
+
+White's Pawn moves from F4 to F5
+
+Current Player: Black
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|r|n|b|q|k|b|n|r|8
+ +-+-+-+-+-+-+-+-+
+7|p|p|p| |p|p|p|p|7
+ +-+-+-+-+-+-+-+-+
+6| | | | | | | | |6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| |P| | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+D8 D6
+
+Black's Queen moves from D8 to D6
+
+Current Player: White
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|r|n|b| |k|b|n|r|8
+ +-+-+-+-+-+-+-+-+
+7|p|p|p| |p|p|p|p|7
+ +-+-+-+-+-+-+-+-+
+6| | | |q| | | | |6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| |P| | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+F5 F6
+
+White's Pawn moves from F5 to F6
+
+Current Player: Black
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|r|n|b| |k|b|n|r|8
+ +-+-+-+-+-+-+-+-+
+7|p|p|p| |p|p|p|p|7
+ +-+-+-+-+-+-+-+-+
+6| | | |q| |P| | |6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+C8 D7
+
+Black's Bishop moves from C8 to D7
+
+Current Player: White
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|r|n| | |k|b|n|r|8
+ +-+-+-+-+-+-+-+-+
+7|p|p|p|b|p|p|p|p|7
+ +-+-+-+-+-+-+-+-+
+6| | | |q| |P| | |6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+F6 G7
+
+White's Pawn moves from F6 to G7 taking Black's Pawn
+
+Current Player: Black
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|r|n| | |k|b|n|r|8
+ +-+-+-+-+-+-+-+-+
+7|p|p|p|b|p|p|P|p|7
+ +-+-+-+-+-+-+-+-+
+6| | | |q| | | | |6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+B8 C5
+
+Black's Knight cannot move to C5!
+
+Current Player: Black
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|r|n| | |k|b|n|r|8
+ +-+-+-+-+-+-+-+-+
+7|p|p|p|b|p|p|P|p|7
+ +-+-+-+-+-+-+-+-+
+6| | | |q| | | | |6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+B8 C5
+
+Black's Knight cannot move to C5!
+
+Current Player: Black
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|r|n| | |k|b|n|r|8
+ +-+-+-+-+-+-+-+-+
+7|p|p|p|b|p|p|P|p|7
+ +-+-+-+-+-+-+-+-+
+6| | | |q| | | | |6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+B8 C6
+
+Black's Knight moves from B8 to C6
+
+Current Player: White
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|r| | | |k|b|n|r|8
+ +-+-+-+-+-+-+-+-+
+7|p|p|p|b|p|p|P|p|7
+ +-+-+-+-+-+-+-+-+
+6| | |n|q| | | | |6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+G7 H8
+
+White's Pawn moves from G7 to H8 taking Black's Rook
+White's Pawn is going to be promoted
+
+Current Player: White
+Status: Normal
+Promoting: Yes, H8
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|r| | | |k|b|n|P|8
+ +-+-+-+-+-+-+-+-+
+7|p|p|p|b|p|p| |p|7
+ +-+-+-+-+-+-+-+-+
+6| | |n|q| | | | |6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+queen
+
+White's Pawn at H8 get promoted and become White's Queen
+
+Current Player: Black
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|r| | | |k|b|n|Q|8
+ +-+-+-+-+-+-+-+-+
+7|p|p|p|b|p|p| |p|7
+ +-+-+-+-+-+-+-+-+
+6| | |n|q| | | | |6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+E8 C8
+
+Black's King castrling from E8 to C8 with Black's Rook from A8 to D8
+
+Current Player: White
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8| | |k|r| |b|n|Q|8
+ +-+-+-+-+-+-+-+-+
+7|p|p|p|b|p|p| |p|7
+ +-+-+-+-+-+-+-+-+
+6| | |n|q| | | | |6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+H8 G8
+
+White's Queen moves from H8 to G8 taking Black's Knight
+
+Current Player: Black
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8| | |k|r| |b|Q| |8
+ +-+-+-+-+-+-+-+-+
+7|p|p|p|b|p|p| |p|7
+ +-+-+-+-+-+-+-+-+
+6| | |n|q| | | | |6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+C8 B8
+
+Black's King moves from C8 to B8
+
+Current Player: White
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8| |k| |r| |b|Q| |8
+ +-+-+-+-+-+-+-+-+
+7|p|p|p|b|p|p| |p|7
+ +-+-+-+-+-+-+-+-+
+6| | |n|q| | | | |6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+G8 F8
+
+White's Queen moves from G8 to F8 taking Black's Bishop
+
+Current Player: Black
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8| |k| |r| |Q| | |8
+ +-+-+-+-+-+-+-+-+
+7|p|p|p|b|p|p| |p|7
+ +-+-+-+-+-+-+-+-+
+6| | |n|q| | | | |6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+B8 A8
+
+Black's King moves from B8 to A8
+
+Current Player: White
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|k| | |r| |Q| | |8
+ +-+-+-+-+-+-+-+-+
+7|p|p|p|b|p|p| |p|7
+ +-+-+-+-+-+-+-+-+
+6| | |n|q| | | | |6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+F8 D8
+
+White's Queen moves from F8 to D8 taking Black's Rook
+Black is in check
+
+Current Player: Black
+Status: Checked
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|k| | |Q| | | | |8
+ +-+-+-+-+-+-+-+-+
+7|p|p|p|b|p|p| |p|7
+ +-+-+-+-+-+-+-+-+
+6| | |n|q| | | | |6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+D8 C8
+
+It is not White's turn to move!
+
+Current Player: Black
+Status: Checked
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|k| | |Q| | | | |8
+ +-+-+-+-+-+-+-+-+
+7|p|p|p|b|p|p| |p|7
+ +-+-+-+-+-+-+-+-+
+6| | |n|q| | | | |6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+D7 C8
+
+Black's Bishop moves from D7 to C8
+
+Current Player: White
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|k| |b|Q| | | | |8
+ +-+-+-+-+-+-+-+-+
+7|p|p|p| |p|p| |p|7
+ +-+-+-+-+-+-+-+-+
+6| | |n|q| | | | |6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+D8 C7
+
+D is not a valid position!
+
+Current Player: White
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|k| |b|Q| | | | |8
+ +-+-+-+-+-+-+-+-+
+7|p|p|p| |p|p| |p|7
+ +-+-+-+-+-+-+-+-+
+6| | |n|q| | | | |6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+D8 C7
+
+White's Queen moves from D8 to C7 taking Black's Pawn
+
+Current Player: Black
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|k| |b| | | | | |8
+ +-+-+-+-+-+-+-+-+
+7|p|p|Q| |p|p| |p|7
+ +-+-+-+-+-+-+-+-+
+6| | |n|q| | | | |6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+H7 H6
+
+Black's Pawn moves from H7 to H6
+
+Current Player: White
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|k| |b| | | | | |8
+ +-+-+-+-+-+-+-+-+
+7|p|p|Q| |p|p| | |7
+ +-+-+-+-+-+-+-+-+
+6| | |n|q| | | |p|6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+C7 C8
+
+White's Queen moves from C7 to C8 taking Black's Bishop
+Black is in check
+
+Current Player: Black
+Status: Checked
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|k| |Q| | | | | |8
+ +-+-+-+-+-+-+-+-+
+7|p|p| | |p|p| | |7
+ +-+-+-+-+-+-+-+-+
+6| | |n|q| | | |p|6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+C6 B6
+
+Black's Knight cannot move to B6!
+
+Current Player: Black
+Status: Checked
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|k| |Q| | | | | |8
+ +-+-+-+-+-+-+-+-+
+7|p|p| | |p|p| | |7
+ +-+-+-+-+-+-+-+-+
+6| | |n|q| | | |p|6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+C6 B5
+
+Black's Knight cannot move to B5!
+
+Current Player: Black
+Status: Checked
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|k| |Q| | | | | |8
+ +-+-+-+-+-+-+-+-+
+7|p|p| | |p|p| | |7
+ +-+-+-+-+-+-+-+-+
+6| | |n|q| | | |p|6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+C6 B8
+
+Black's Knight moves from C6 to B8
+
+Current Player: White
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|k|n|Q| | | | | |8
+ +-+-+-+-+-+-+-+-+
+7|p|p| | |p|p| | |7
+ +-+-+-+-+-+-+-+-+
+6| | | |q| | | |p|6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+C8  D8
+
+White's Queen moves from C8 to D8
+
+Current Player: Black
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|k|n| |Q| | | | |8
+ +-+-+-+-+-+-+-+-+
+7|p|p| | |p|p| | |7
+ +-+-+-+-+-+-+-+-+
+6| | | |q| | | |p|6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+B8 A6
+
+Black's Knight cannot move to A6!
+
+Current Player: Black
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|k|n| |Q| | | | |8
+ +-+-+-+-+-+-+-+-+
+7|p|p| | |p|p| | |7
+ +-+-+-+-+-+-+-+-+
+6| | | |q| | | |p|6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+C6 C5
+
+There is no piece at position C6!
+
+Current Player: Black
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|k|n| |Q| | | | |8
+ +-+-+-+-+-+-+-+-+
+7|p|p| | |p|p| | |7
+ +-+-+-+-+-+-+-+-+
+6| | | |q| | | |p|6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+C6 C7
+
+There is no piece at position C6!
+
+Current Player: Black
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|k|n| |Q| | | | |8
+ +-+-+-+-+-+-+-+-+
+7|p|p| | |p|p| | |7
+ +-+-+-+-+-+-+-+-+
+6| | | |q| | | |p|6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+D6 D7
+
+Black's Queen moves from D6 to D7
+
+Current Player: White
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|k|n| |Q| | | | |8
+ +-+-+-+-+-+-+-+-+
+7|p|p| |q|p|p| | |7
+ +-+-+-+-+-+-+-+-+
+6| | | | | | | |p|6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+D8 D7
+
+White's Queen moves from D8 to D7 taking Black's Queen
+
+Current Player: Black
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|k|n| | | | | | |8
+ +-+-+-+-+-+-+-+-+
+7|p|p| |Q|p|p| | |7
+ +-+-+-+-+-+-+-+-+
+6| | | | | | | |p|6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+B8 A6
+
+Black's Knight moves from B8 to A6
+
+Current Player: White
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|k| | | | | | | |8
+ +-+-+-+-+-+-+-+-+
+7|p|p| |Q|p|p| | |7
+ +-+-+-+-+-+-+-+-+
+6|n| | | | | | |p|6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | | | | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B|N|R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+G1 F3
+
+White's Knight moves from G1 to F3
+
+Current Player: Black
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|k| | | | | | | |8
+ +-+-+-+-+-+-+-+-+
+7|p|p| |Q|p|p| | |7
+ +-+-+-+-+-+-+-+-+
+6|n| | | | | | |p|6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | |N| | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B| |R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+A6 D6
+
+Black's Knight cannot move to D6!
+
+Current Player: Black
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|k| | | | | | | |8
+ +-+-+-+-+-+-+-+-+
+7|p|p| |Q|p|p| | |7
+ +-+-+-+-+-+-+-+-+
+6|n| | | | | | |p|6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | |N| | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B| |R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+A6 C7
+
+Black's Knight moves from A6 to C7
+
+Current Player: White
+Status: Normal
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|k| | | | | | | |8
+ +-+-+-+-+-+-+-+-+
+7|p|p|n|Q|p|p| | |7
+ +-+-+-+-+-+-+-+-+
+6| | | | | | | |p|6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | |N| | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B| |R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+D7 D8
+
+White's Queen moves from D7 to D8
+Black is in checkmate
+
+Current Player: Black
+Status: Checkmated
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|k| | |Q| | | | |8
+ +-+-+-+-+-+-+-+-+
+7|p|p|n| |p|p| | |7
+ +-+-+-+-+-+-+-+-+
+6| | | | | | | |p|6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | |N| | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B| |R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+A8 B8
+
+The game is already over!
+
+Current Player: Black
+Status: Checkmated
+Promoting: None
+
+  A B C D E F G H
+ +-+-+-+-+-+-+-+-+
+8|k| | |Q| | | | |8
+ +-+-+-+-+-+-+-+-+
+7|p|p|n| |p|p| | |7
+ +-+-+-+-+-+-+-+-+
+6| | | | | | | |p|6
+ +-+-+-+-+-+-+-+-+
+5| | | |p| | | | |5
+ +-+-+-+-+-+-+-+-+
+4| | | | | | | | |4
+ +-+-+-+-+-+-+-+-+
+3| | | | | |N| | |3
+ +-+-+-+-+-+-+-+-+
+2|P|P|P|P|P| |P|P|2
+ +-+-+-+-+-+-+-+-+
+1|R|N|B|Q|K|B| |R|1
+ +-+-+-+-+-+-+-+-+
+  A B C D E F G H
+
+quit
+
+
+Process finished with exit code 0

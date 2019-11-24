@@ -26,8 +26,10 @@ void ChessBoard::resetBoard()
         for (int c = 0; c < COL; c ++)
             delete m_board[r][c];
     memset(m_board, 0, sizeof(m_board));
-    memset(m_passant_pawn, 0, sizeof(m_passant_pawn));
     memset(m_king, 0, sizeof(m_king));
+    memset(m_passant_pawn, 0, sizeof(m_passant_pawn));
+    memset(m_promotion_pawn, 0, sizeof(m_promotion_pawn));
+    m_status = NORMAL;
     m_side = WHITE;
     m_winner = UNKNOWN;
 
@@ -70,7 +72,6 @@ void ChessBoard::resetBoard()
     setPiece(strCoord("G7"), new Pawn(this, BLACK, strCoord("G7")));
     setPiece(strCoord("H7"), new Pawn(this, BLACK, strCoord("H7")));
 
-    // TODO: assign King pointers.
     m_ostr << "A new chess game is started!" << endl;
     return;
 }
@@ -79,7 +80,12 @@ void ChessBoard::submitMove(const std::string src, const std::string dst)
 {
     if (m_winner != UNKNOWN)
     {
-        m_ostr << "The game is already over" << endl;
+        m_ostr << "The game is already over!" << endl;
+        return;
+    }
+    else if (m_promotion_pawn[m_side])
+    {
+        m_ostr << getPlayer(m_side) << " has a pawn to be promoted!" << endl;
         return;
     }
 
@@ -130,31 +136,62 @@ void ChessBoard::submitMove(const std::string src, const std::string dst)
         m_ostr << endl;
     }
 
-    // drawBoard();
-
     if (piece->isPawn() && abs(s.first - d.first) == 2)
         m_passant_pawn[m_side] = piece;
     else
         m_passant_pawn[m_side] = nullptr;
 
-    m_side = 1 - m_side;
+    if (piece->isPawn() && (piece->getPos().first == (1 - m_side) * (ROW - 1)))
+    {
+        m_promotion_pawn[m_side] = piece;
+        m_ostr << piece->getName() << " is going to be promoted" << endl;
+        return;
+    }
 
-    bool check = checkCheck(m_side);
-    // drawBoard();
-    bool mate = mateCheck(m_side);
-    // drawBoard();
-    if (check && mate)
+    swapPlayer();
+
+    return;
+}
+
+void ChessBoard::submitPromotion(std::string type)
+{
+    if (m_winner != UNKNOWN)
     {
-        m_winner = 1 - m_side;
-        m_ostr << getPlayer(m_side) << " is in checkmate" << endl;
+        m_ostr << "The game is already over!" << endl;
+        return;
     }
-    else if (check)
-        m_ostr << getPlayer(m_side) << " is in check" << endl;
-    else if (mate)
+    if (!m_promotion_pawn[m_side])
     {
-        m_winner = 1 - m_side;
-        m_ostr << getPlayer(m_side) << " is in stalemate" << endl;
+        m_ostr << getPlayer(m_side) << " has no pawn to be promoted!" << endl;
+        return;
     }
+
+    Piece* new_piece = nullptr;
+    if (type == "rook")
+        new_piece = new Rook(this, m_side, m_promotion_pawn[m_side]->getPos());
+    else if (type == "knight")
+        new_piece = new Knight(this, m_side, m_promotion_pawn[m_side]->getPos());
+    else if (type == "bishop")
+        new_piece = new Bishop(this, m_side, m_promotion_pawn[m_side]->getPos());
+    else if (type == "queen")
+        new_piece = new Queen(this, m_side, m_promotion_pawn[m_side]->getPos());
+
+    if (!new_piece)
+    {
+        m_ostr << type << " is not a valid type!" << endl;
+        return;
+    }
+
+    m_ostr << m_promotion_pawn[m_side]->getName() << " at " << coordStr(m_promotion_pawn[m_side]->getPos());
+
+    setPiece(m_promotion_pawn[m_side]->getPos(), nullptr);
+    delete m_promotion_pawn[m_side];
+    m_promotion_pawn[m_side] = nullptr;
+    setPiece(new_piece->getPos(), new_piece);
+
+    m_ostr << " get promoted and become " << new_piece->getName() << endl;
+
+    swapPlayer();
 
     return;
 }
@@ -163,6 +200,34 @@ void ChessBoard::drawBoard(bool simple)
 {
     if (!simple)
     {
+        m_ostr << "Current Player: " << getPlayer(m_side) << endl;
+        m_ostr << "Status: ";
+        switch (m_status)
+        {
+            case CHECK:
+            {
+                m_ostr << "Checked" << endl;
+                break;
+            }
+            case STALEMATE:
+            {
+                m_ostr << "Stalemated" << endl;
+                break;
+            }
+            case CHECKMATE:
+            {
+                m_ostr << "Checkmated" << endl;
+                break;
+            }
+            default:
+                m_ostr << "Normal" << endl;
+        }
+        m_ostr << "Promoting: ";
+        if (m_promotion_pawn[m_side])
+            m_ostr << "Yes, " << coordStr(m_promotion_pawn[m_side]->getPos()) << endl;
+        else
+            m_ostr << "None" << endl;
+        m_ostr << endl;
         m_ostr << "  A B C D E F G H  " << endl;
         m_ostr << " +-+-+-+-+-+-+-+-+ " << endl;
         for (int r = ROW - 1; r >= 0; r--)
@@ -177,6 +242,7 @@ void ChessBoard::drawBoard(bool simple)
     }
     else
     {
+        m_ostr << m_side << " " << m_status << " " << (m_promotion_pawn[m_side] ? 1 : 0) << endl;
         for (int r = ROW - 1; r >= 0; r--)
         {
             for (int c = 0; c < COL; c++)
@@ -219,6 +285,32 @@ Piece* ChessBoard::dryrunMove(coord dst, Piece* piece)
     return obj ? obj : piece;
 }
 
+void ChessBoard::swapPlayer()
+{
+    m_side = 1 - m_side;
+    m_status = NORMAL;
+
+    bool check = checkCheck(m_side), mate = mateCheck(m_side);
+    if (check && mate)
+    {
+        m_status = CHECKMATE;
+        m_winner = 1 - m_side;
+        m_ostr << getPlayer(m_side) << " is in checkmate" << endl;
+    }
+    else if (check)
+    {
+        m_status = CHECK;
+        m_ostr << getPlayer(m_side) << " is in check" << endl;
+    }
+    else if (mate)
+    {
+        m_status = STALEMATE;
+        m_winner = 1 - m_side;
+        m_ostr << getPlayer(m_side) << " is in stalemate" << endl;
+    }
+
+    return;
+}
 
 bool ChessBoard::castlingCheck(Piece *king, coord king_dst)
 {
@@ -257,6 +349,9 @@ bool ChessBoard::castlingCheck(Piece *king, coord king_dst)
     rook->setPos(rook_dst);
     rook->setMoved(true);
     setPiece(rook_src, nullptr);
+
+    m_ostr << king->getName() << " castling from " << coordStr(king_src) << " to " << coordStr(king_dst) << " with ";
+    m_ostr << rook->getName() << " from " << coordStr(rook_src) << " to " << coordStr(rook_dst) << endl;
 
     return true;
 }

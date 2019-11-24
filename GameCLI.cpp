@@ -28,6 +28,13 @@ int main()
             board.drawBoard();
             cout << endl;
         }
+        else if (src == "rook" || src == "knight" || src == "bishop" || src == "queen")
+        {
+            board.submitPromotion(src);
+            cout << endl;
+            board.drawBoard();
+            cout << endl;
+        }
         else
         {
             cin >> dst;
