@@ -1,5 +1,5 @@
 chess: ChessMain.cpp ChessBoard.h ChessBoard.cpp Piece.cpp Piece.h Makefile
-	g++ -std=c++11 -Wall -g -o chess ChessMain.cpp ChessBoard.cpp Piece.cpp
+	g++ -std=c++11 -Wall -g -O2 -o chess ChessMain.cpp ChessBoard.cpp Piece.cpp
 
 .PHONY: run
 run: chess
@@ -10,7 +10,7 @@ run_chess: chess
 	./chess
 
 gamecli: GameCLI.cpp ChessBoard.h ChessBoard.cpp Piece.cpp Piece.h Makefile
-	g++ -std=c++11 -Wall -g -o gamecli GameCLI.cpp ChessBoard.cpp Piece.cpp
+	g++ -std=c++11 -Wall -g -O2 -o gamecli GameCLI.cpp ChessBoard.cpp Piece.cpp
 
 .PHONY: run_gamecli
 run_gamecli: gamecli

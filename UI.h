@@ -9,32 +9,64 @@
 #include <iostream>
 #include <sstream>
 
+
+/**
+ * The class for the chess game record view.
+ */
 class RecordView: public finalcut::FTextView
 {
 public:
+    /**
+     * Constructor.
+     * @param parent: The parent widget.
+     */
     explicit RecordView(finalcut::FWidget* parent=nullptr):
         FTextView(parent)
     {
     }
-    ~RecordView()
-    {
-    }
+    /**
+     * Deconstructor.
+     */
+    ~RecordView() override = default;
+    /**
+     * Append a string, split it into rows, if necessary.
+     * @param str: The appending string.
+     */
     void appendStr(std::string str);
+    /**
+     * If the view is currently scrollable.
+     * @return The result.
+     */
     inline bool scrollable()
     {
         return getRows() > getHeight() - 2;
     }
+    /**
+     * Scroll the view to the bottom.
+     */
     inline void scrollBottom()
     {
+        // If it is scrollable.
         if (scrollable())
-            scrollToY(getRows() - getHeight() + 2);
-        return;
+            // Scroll it to the right position.
+            scrollToY((int)getRows() - (int)getHeight() + 2);
     }
 protected:
-    virtual void onKeyPress(finalcut::FKeyEvent* ev) override;
-    virtual void onWheel(finalcut::FWheelEvent* ev) override;
+    /**
+     * Event Handler: handle keypress event.
+     * @param ev The event object pointer.
+     */
+    void onKeyPress(finalcut::FKeyEvent* ev) override;
+    /**
+     * Event Handler: handle wheel event.
+     * @param ev The event object pointer.
+     */
+    void onWheel(finalcut::FWheelEvent* ev) override;
 };
 
+/**
+ * Main view(dialog) for the chess game.
+ */
 class View: public finalcut::FDialog
 {
 public:
@@ -42,19 +74,24 @@ public:
     {
         return std::string(1, c + 'A') + std::string(1, ChessBoard::ROW - 1 - r + '1');
     }
+    /**
+     * Normalize a index to the range 0 ~ (ROW - 1);
+     * @param x: The index.
+     * @return Normalized result.
+     */
     inline static int normalize(int x)
     {
         return (x + ChessBoard::ROW) % ChessBoard::ROW;
     }
 public:
     explicit View(finalcut::FWidget* parent=nullptr);
-    ~View();
+    ~View() override;
 protected:
-    virtual void draw() override;
-    virtual void onKeyPress(finalcut::FKeyEvent* ev) override;
-    virtual void onWindowRaised(finalcut::FEvent* ev) override;
-    virtual void onWindowActive(finalcut::FEvent* ev) override;
-    virtual void onClose(finalcut::FCloseEvent* ev) override;
+    void draw() override;
+    void onKeyPress(finalcut::FKeyEvent* ev) override;
+    void onWindowRaised(finalcut::FEvent* ev) override;
+    void onWindowActive(finalcut::FEvent* ev) override;
+    void onClose(finalcut::FCloseEvent* ev) override;
 private:
     inline void cleanStream()
     {
@@ -67,7 +104,7 @@ private:
     void selectPiece(int r, int c);
     bool load(bool msg=true);
     void restart();
-    bool submit(void);
+    bool submit();
     void promote(std::string type);
 public:
     static const int PIECE_NUM = 6;
@@ -110,8 +147,8 @@ class PromotionView: public finalcut::FDialog
 {
     friend void promotionSetValue(finalcut::FWidget* w, finalcut::FWidget::data_ptr data);
 public:
-    PromotionView(finalcut::FWidget* parent=nullptr);
-    ~PromotionView();
+    explicit PromotionView(finalcut::FWidget* parent=nullptr);
+    ~PromotionView() override = default;
     inline std::string getType()
     {
         return m_type;

@@ -73,7 +73,6 @@ void ChessBoard::resetBoard()
     setPiece(strCoord("H7"), new Pawn(this, BLACK, strCoord("H7")));
 
     m_ostr << "A new chess game is started!" << endl;
-    return;
 }
 
 void ChessBoard::submitMove(const std::string src, const std::string dst)
@@ -149,8 +148,6 @@ void ChessBoard::submitMove(const std::string src, const std::string dst)
     }
 
     swapPlayer();
-
-    return;
 }
 
 void ChessBoard::submitPromotion(std::string type)
@@ -192,8 +189,6 @@ void ChessBoard::submitPromotion(std::string type)
     m_ostr << " get promoted and become " << new_piece->getName() << endl;
 
     swapPlayer();
-
-    return;
 }
 
 void ChessBoard::drawBoard(bool simple)
@@ -250,7 +245,6 @@ void ChessBoard::drawBoard(bool simple)
             m_ostr << endl;
         }
     }
-    return;
 }
 
 Piece* ChessBoard::dryrunMove(coord dst, Piece* piece)
@@ -308,8 +302,6 @@ void ChessBoard::swapPlayer()
         m_winner = 1 - m_side;
         m_ostr << getPlayer(m_side) << " is in stalemate" << endl;
     }
-
-    return;
 }
 
 bool ChessBoard::castlingCheck(Piece *king, coord king_dst)

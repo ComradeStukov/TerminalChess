@@ -195,6 +195,7 @@ View::View(FWidget* parent):
 
 View::~View()
 {
+    delete m_board;
 }
 
 void View::focusPiece(int r, int c)
@@ -546,8 +547,4 @@ PromotionView::PromotionView(finalcut::FWidget* parent):
     m_bishop->addCallback("clicked", F_FUNCTION_CALLBACK(&promotionSetValue), this);
     m_bishop->setStatusbarMessage("Promote the pawn to bishop");
     m_queen->setFocus();
-}
-
-PromotionView::~PromotionView()
-{
 }

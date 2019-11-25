@@ -3,59 +3,118 @@
 
 #include <string>
 
+// Using pair<int, int> to represent a coordinate.
 typedef std::pair<int, int> coord;
 
+// Forward declaration the ChessBoard class.
 class ChessBoard;
 
+/**
+ * The abstract class representing a general chess piece.
+ */
 class Piece
 {
 public:
+    /**
+     * Constructor.
+     * @param board: A pointer pointing to the board.
+     * @param side: Which side the piece belongs to.
+     * @param pos: Initial position.
+     */
     Piece(ChessBoard* board, int side, coord pos):
         m_board(board), m_side(side), m_pos(pos), m_moved(false)
     {
     }
-    virtual ~Piece()
-    {
-    }
+    /**
+     * Deconstructor.
+     */
+    virtual ~Piece() = default;
+    /**
+     * Get the name of the piece, including side and type.
+     * @return The name.
+     */
     virtual std::string getName();
-    inline ChessBoard* getBoard()
-    {
-        return m_board;
-    }
+    /**
+     * Get the side of the piece.
+     * @return The side.
+     */
     inline int getSide()
     {
         return m_side;
     }
+    /**
+     * Get current position of the piece.
+     * @return The current position.
+     */
     inline coord getPos()
     {
         return m_pos;
     }
+    /**
+     * Set current position for the piece.
+     * @param pos: The current position.
+     */
     inline void setPos(coord pos)
     {
         m_pos = pos;
-        return;
     }
+    /**
+     * Get if the piece has been moved.
+     * @return The result.
+     */
     inline bool getMoved()
     {
         return m_moved;
     }
+    /**
+     * Set if the piece is moved.
+     * @param moved: If the piece is moved.
+     */
     inline void setMoved(bool moved)
     {
         m_moved = moved;
-        return;
     }
+    /**
+     * Check whether there is any other piece on the direct path to the destination(excluded).
+     * @param pos Destination.
+     * @return The result.
+     */
     bool pathCheck(coord pos);
+    /**
+     * Check whether the piece can move to the designated position.
+     * Note: This check does not consider the situation of the king after the movement.
+     * @param pos: The position.
+     * @return nullptr if this is invalid movement,
+     * or a pointer to another piece, if any piece is going to be taken,
+     * or a pointer to the piece itself, if none piece is going to be take.
+     */
     virtual Piece* pieceCheck(coord pos);
+    /**
+     * Check if the piece is a pawn.
+     * @return The result
+     */
     virtual bool isPawn();
+    /**
+     * Get the one-char symbol of the piece.
+     * @return The symbol.
+     */
     virtual char getSymbol() = 0;
 
 protected:
+    // The chess board the piece is on.
     ChessBoard* m_board;
+    // Which side the piece belongs to.
     int m_side;
+    // The current position.
     coord m_pos;
+    // If the piece has been moved.
     bool m_moved;
 };
 
+/**
+ * Derived class representing a King.
+ * For detailed information, please see the super class Piece.
+ */
 class King: public Piece
 {
 public:
@@ -63,14 +122,16 @@ public:
         Piece(board, side, pos)
     {
     }
-    virtual ~King()
-    {
-    }
-    virtual std::string getName();
-    virtual Piece* pieceCheck(coord pos);
-    virtual char getSymbol();
+    ~King() override = default;
+    std::string getName() override;
+    Piece* pieceCheck(coord pos) override;
+    char getSymbol() override;
 };
 
+/**
+ * Derived class representing a King.
+ * For detailed information, please see the super class Piece.
+ */
 class Rook: public Piece
 {
 public:
@@ -78,14 +139,16 @@ public:
         Piece(board, side, pos)
     {
     }
-    virtual ~Rook()
-    {
-    }
-    virtual std::string getName();
-    virtual Piece* pieceCheck(coord pos);
-    virtual char getSymbol();
+    ~Rook() override = default;
+    std::string getName() override;
+    Piece* pieceCheck(coord pos) override;
+    char getSymbol() override;
 };
 
+/**
+ * Derived class representing a King.
+ * For detailed information, please see the super class Piece.
+ */
 class Bishop: public Piece
 {
 public:
@@ -93,14 +156,16 @@ public:
         Piece(board, side, pos)
     {
     }
-    virtual ~Bishop()
-    {
-    }
-    virtual std::string getName();
-    virtual Piece* pieceCheck(coord pos);
-    virtual char getSymbol();
+    ~Bishop() override = default;
+    std::string getName() override;
+    Piece* pieceCheck(coord pos) override;
+    char getSymbol() override;
 };
 
+/**
+ * Derived class representing a King.
+ * For detailed information, please see the super class Piece.
+ */
 class Queen: public Piece
 {
 public:
@@ -108,14 +173,16 @@ public:
         Piece(board, side, pos)
     {
     }
-    virtual ~Queen()
-    {
-    }
-    virtual std::string getName();
-    virtual Piece* pieceCheck(coord pos);
-    virtual char getSymbol();
+    ~Queen() override = default;
+    std::string getName() override;
+    Piece* pieceCheck(coord pos) override;
+    char getSymbol() override;
 };
 
+/**
+ * Derived class representing a King.
+ * For detailed information, please see the super class Piece.
+ */
 class Knight: public Piece
 {
 public:
@@ -123,14 +190,16 @@ public:
         Piece(board, side, pos)
     {
     }
-    virtual ~Knight()
-    {
-    }
-    virtual std::string getName();
-    virtual Piece* pieceCheck(coord pos);
-    virtual char getSymbol();
+    ~Knight() override = default;
+    std::string getName() override;
+    Piece* pieceCheck(coord pos) override;
+    char getSymbol() override;
 };
 
+/**
+ * Derived class representing a King.
+ * For detailed information, please see the super class Piece.
+ */
 class Pawn: public Piece
 {
 public:
@@ -138,14 +207,13 @@ public:
         Piece(board, side, pos), m_direct(side ? -1 : 1)
     {
     }
-    virtual ~Pawn()
-    {
-    }
-    virtual std::string getName();
-    virtual bool isPawn();
-    virtual Piece* pieceCheck(coord pos);
-    virtual char getSymbol();
+    ~Pawn() override = default;
+    std::string getName() override;
+    bool isPawn() override;
+    Piece* pieceCheck(coord pos) override;
+    char getSymbol() override;
 private:
+    // The direct (up or down) which the pawn can move.
     int m_direct;
 };
 
