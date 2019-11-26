@@ -1,9 +1,26 @@
+/***********************************************************************
+* ChessMain.cpp Implementation of original coursework objects          *
+*                                                                      *
+* This file is part of Terminal Chess.                                 *
+*                                                                      *
+* Copyright 2019-2020 SBofGaySchoolBuPaAnything                        *
+*                                                                      *
+* Terminal Chess is free software under LGPLv3.                        *
+*                                                                      *
+* You should have received a copy of the GNU Lesser General Public     *
+* License along with this program.  If not, see                        *
+* <http://www.gnu.org/licenses/>.                                      *
+***********************************************************************/
+
 #include "ChessBoard.h"
 
 #include <iostream>
 
 using namespace std;
 
+/*
+ * This is only a main function for the original coursework.
+ */
 int main()
 {
     cout << "========================\n";

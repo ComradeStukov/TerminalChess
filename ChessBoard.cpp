@@ -1,3 +1,17 @@
+/***********************************************************************
+* ChessBoard.cpp Implementation of core class for chess simulation     *
+*                                                                      *
+* This file is part of Terminal Chess.                                 *
+*                                                                      *
+* Copyright 2019-2020 SBofGaySchoolBuPaAnything                        *
+*                                                                      *
+* Terminal Chess is free software under LGPLv3.                        *
+*                                                                      *
+* You should have received a copy of the GNU Lesser General Public     *
+* License along with this program.  If not, see                        *
+* <http://www.gnu.org/licenses/>.                                      *
+***********************************************************************/
+
 #include "ChessBoard.h"
 
 #include <iostream>
@@ -6,15 +20,18 @@
 
 using namespace std;
 
+
 ChessBoard::ChessBoard(ostream& ostr):
     m_ostr(ostr)
 {
+    // Set all piece pointer to nullptr first.
     memset(m_board, 0, sizeof(m_board));
     resetBoard();
 }
 
 ChessBoard::~ChessBoard()
 {
+    // Delete all piece objects.
     for (int r = 0; r < ROW; r ++)
         for (int c = 0; c < COL; c ++)
             delete m_board[r][c];
@@ -22,9 +39,11 @@ ChessBoard::~ChessBoard()
 
 void ChessBoard::resetBoard()
 {
+    // Delete all piece objects.
     for (int r = 0; r < ROW; r ++)
         for (int c = 0; c < COL; c ++)
             delete m_board[r][c];
+    // Reset all variables.
     memset(m_board, 0, sizeof(m_board));
     memset(m_king, 0, sizeof(m_king));
     memset(m_passant_pawn, 0, sizeof(m_passant_pawn));
@@ -33,9 +52,11 @@ void ChessBoard::resetBoard()
     m_side = WHITE;
     m_winner = UNKNOWN;
 
+    // Generate king first.
     m_king[WHITE] = new King(this, WHITE, strCoord("E1"));
     m_king[BLACK] = new King(this, BLACK, strCoord("E8"));
 
+    // Generate all other pieces.
     setPiece(strCoord("A1"), new Rook(this, WHITE, strCoord("A1")));
     setPiece(strCoord("B1"), new Knight(this, WHITE, strCoord("B1")));
     setPiece(strCoord("C1"), new Bishop(this, WHITE, strCoord("C1")));
@@ -77,17 +98,21 @@ void ChessBoard::resetBoard()
 
 void ChessBoard::submitMove(const std::string src, const std::string dst)
 {
+    // Check if the game is over.
     if (m_winner != UNKNOWN)
     {
         m_ostr << "The game is already over!" << endl;
         return;
     }
+
+    // Check if any pawn is waiting to be promoted.
     else if (m_promotion_pawn[m_side])
     {
         m_ostr << getPlayer(m_side) << " has a pawn to be promoted!" << endl;
         return;
     }
 
+    // Check if the coordinates are valid.
     coord s = strCoord(src), d = strCoord(dst);
     if (!checkCoord(s))
     {
@@ -100,6 +125,7 @@ void ChessBoard::submitMove(const std::string src, const std::string dst)
         return;
     }
 
+    // Check if the piece with the coordinate is valid.
     Piece* piece = getPiece(s);
     if (!piece)
     {
@@ -112,8 +138,10 @@ void ChessBoard::submitMove(const std::string src, const std::string dst)
         return;
     }
 
+    // Do the castling check first.
     if (!castlingCheck(piece, d))
     {
+        // Dry run the movement, and check if the movement is valid.
         Piece *obj = dryrunMove(d, piece);
         if (!obj)
         {
@@ -121,13 +149,16 @@ void ChessBoard::submitMove(const std::string src, const std::string dst)
             return;
         }
 
+        // Carry on the movement.
         m_ostr << piece->getName() << " moves from " << src << " to " + dst;
+        // If any piece is going to be taken.
         if (obj != piece)
         {
             m_ostr << " taking " << obj->getName();
             setPiece(obj->getPos(), nullptr);
             delete obj;
         }
+        // Move the piece.
         setPiece(d, piece);
         piece->setPos(d);
         piece->setMoved(true);
@@ -135,11 +166,13 @@ void ChessBoard::submitMove(const std::string src, const std::string dst)
         m_ostr << endl;
     }
 
+    // If it is a pawn and it moved two step forward, it can be taken by an en-passant on the next step.
     if (piece->isPawn() && abs(s.first - d.first) == 2)
         m_passant_pawn[m_side] = piece;
     else
         m_passant_pawn[m_side] = nullptr;
 
+    // Check if a pawn has reached the bottom.
     if (piece->isPawn() && (piece->getPos().first == (1 - m_side) * (ROW - 1)))
     {
         m_promotion_pawn[m_side] = piece;
@@ -147,22 +180,27 @@ void ChessBoard::submitMove(const std::string src, const std::string dst)
         return;
     }
 
+    // Swap the current player and check its status.
     swapPlayer();
 }
 
 void ChessBoard::submitPromotion(std::string type)
 {
+    // Check if the game is over.
     if (m_winner != UNKNOWN)
     {
         m_ostr << "The game is already over!" << endl;
         return;
     }
+
+    // Check if there is indeed a pawn waiting to be promoted.
     if (!m_promotion_pawn[m_side])
     {
         m_ostr << getPlayer(m_side) << " has no pawn to be promoted!" << endl;
         return;
     }
 
+    // Check the promotion type and generate the new piece.
     Piece* new_piece = nullptr;
     if (type == "rook")
         new_piece = new Rook(this, m_side, m_promotion_pawn[m_side]->getPos());
@@ -172,7 +210,6 @@ void ChessBoard::submitPromotion(std::string type)
         new_piece = new Bishop(this, m_side, m_promotion_pawn[m_side]->getPos());
     else if (type == "queen")
         new_piece = new Queen(this, m_side, m_promotion_pawn[m_side]->getPos());
-
     if (!new_piece)
     {
         m_ostr << type << " is not a valid type!" << endl;
@@ -181,6 +218,7 @@ void ChessBoard::submitPromotion(std::string type)
 
     m_ostr << m_promotion_pawn[m_side]->getName() << " at " << coordStr(m_promotion_pawn[m_side]->getPos());
 
+    // Delete the original pawn, set the new pawn.
     setPiece(m_promotion_pawn[m_side]->getPos(), nullptr);
     delete m_promotion_pawn[m_side];
     m_promotion_pawn[m_side] = nullptr;
@@ -188,13 +226,16 @@ void ChessBoard::submitPromotion(std::string type)
 
     m_ostr << " get promoted and become " << new_piece->getName() << endl;
 
+    // Swap the player.
     swapPlayer();
 }
 
 void ChessBoard::drawBoard(bool simple)
 {
+    // If it is not a simple mode.
     if (!simple)
     {
+        // Output relavent information.
         m_ostr << "Current Player: " << getPlayer(m_side) << endl;
         m_ostr << "Status: ";
         switch (m_status)
@@ -223,6 +264,8 @@ void ChessBoard::drawBoard(bool simple)
         else
             m_ostr << "None" << endl;
         m_ostr << endl;
+
+        // Output the whole chess board.
         m_ostr << "  A B C D E F G H  " << endl;
         m_ostr << " +-+-+-+-+-+-+-+-+ " << endl;
         for (int r = ROW - 1; r >= 0; r--)
@@ -235,9 +278,14 @@ void ChessBoard::drawBoard(bool simple)
         }
         m_ostr << "  A B C D E F G H  " << endl;
     }
+
+    // In a simple mode.
     else
     {
+        // Output information in a simple form.
         m_ostr << m_side << " " << m_status << " " << (m_promotion_pawn[m_side] ? 1 : 0) << endl;
+
+        // And the board.
         for (int r = ROW - 1; r >= 0; r--)
         {
             for (int c = 0; c < COL; c++)
@@ -247,17 +295,27 @@ void ChessBoard::drawBoard(bool simple)
     }
 }
 
+/*
+ * To implement this function, four steps are needed.
+ * 1. Check if the movement is valid for the piece itself.
+ * 2. If true, carry out the movement.
+ * 3. Check if the king is under direct attack after the movement, and record the result.
+ * 4. Rollback the movement.
+ */
 Piece* ChessBoard::dryrunMove(coord dst, Piece* piece)
 {
+    // Check if the movement is valid for the piece.
     Piece* obj = piece->pieceCheck(dst);
     if (!obj)
         return nullptr;
     else if (obj == piece)
         obj = nullptr;
 
+    // Record the original information for the pieces.
     bool piece_moved = piece->getMoved();
     coord piece_src = piece->getPos(), obj_src = obj ? obj->getPos() : make_pair(-1, -1);
 
+    // Carry out the movement.
     if (obj)
         setPiece(obj_src, nullptr);
     setPiece(dst, piece);
@@ -265,8 +323,10 @@ Piece* ChessBoard::dryrunMove(coord dst, Piece* piece)
     piece->setMoved(true);
     setPiece(piece_src, nullptr);
 
+    // Check if the king is then under attack.
     bool res = !checkCheck(m_side);
 
+    // Rollback the movement.
     setPiece(piece_src, piece);
     piece->setMoved(piece_moved);
     piece->setPos(piece_src);
@@ -274,6 +334,7 @@ Piece* ChessBoard::dryrunMove(coord dst, Piece* piece)
     if (obj)
         setPiece(obj_src, obj);
 
+    // Return the result.
     if (!res)
         return nullptr;
     return obj ? obj : piece;
@@ -281,9 +342,11 @@ Piece* ChessBoard::dryrunMove(coord dst, Piece* piece)
 
 void ChessBoard::swapPlayer()
 {
+    // Swap the player and reset the status.
     m_side = 1 - m_side;
     m_status = NORMAL;
 
+    // Check wheather the player is in checkmate, check or stalemate.
     bool check = checkCheck(m_side), mate = mateCheck(m_side);
     if (check && mate)
     {
@@ -306,11 +369,14 @@ void ChessBoard::swapPlayer()
 
 bool ChessBoard::castlingCheck(Piece *king, coord king_dst)
 {
+    // If it is a castling, king must be not moved, and it must move two steps leftward or rightward.
     if (king != m_king[m_side] ||
         king_dst.first != king->getPos().first ||
         abs(king_dst.second - king->getPos().second) != 2 ||
         king->getMoved())
         return false;
+
+    // Check if the path is clear, toward the corner at that row.
     int d = king_dst.second > king->getPos().second ? 1 : -1;
     int r = king->getPos().first, c = king->getPos().second + d;
     while (0 < c && c < COL - 1)
@@ -319,9 +385,14 @@ bool ChessBoard::castlingCheck(Piece *king, coord king_dst)
             return false;
         c += d;
     }
+
+    // Check if the piece at the corner is not moved.
+    // Do not need to check if it is a rook, as if the piece has not been moved, it must be a rook.
     Piece* rook = getPiece(make_pair(r, c));
     if (!rook || rook->getMoved())
         return false;
+
+    // Check if the king's path toward its destination is under attack.
     Piece* p;
     for (r = 0; r < ROW; r++)
         for (c = 0; c < COL; c++)
@@ -329,14 +400,18 @@ bool ChessBoard::castlingCheck(Piece *king, coord king_dst)
                 for (int i = 0; i < 3; i++)
                     if (p->pieceCheck(make_pair(king->getPos().first, king->getPos().second + i * d)))
                         return false;
+
+    // If reaches here, the castling is valid. Generate all positions.
     coord king_src = king->getPos(), rook_src = rook->getPos(), rook_dst = king->getPos();
     rook_dst.second = rook_dst.second + d;
 
+    // Move the king.
     setPiece(king_dst, king);
     king->setPos(king_dst);
     king->setMoved(true);
     setPiece(king_src, nullptr);
 
+    // Move the rook.
     setPiece(rook_dst, rook);
     rook->setPos(rook_dst);
     rook->setMoved(true);
@@ -350,8 +425,10 @@ bool ChessBoard::castlingCheck(Piece *king, coord king_dst)
 
 bool ChessBoard::checkCheck(int side)
 {
+    // Get the position of the king.
     coord tar = m_king[side]->getPos();
-    // m_ostr << side << " " << tar.first << " " << tar.second << endl;
+
+    // For all piece in the opposite side, check if it can attack the king.
     Piece* p;
     for (int r = 0; r < ROW; r++)
         for (int c = 0; c < COL; c++)
@@ -360,16 +437,17 @@ bool ChessBoard::checkCheck(int side)
     return false;
 }
 
+/*
+ * Castling is not considered as a valid movement here.
+ * But this does not influence the result.
+ * Because if the castling is available,
+ * the two grid next to the king must be safe to move to.
+ * Thus, if castling is available, there are definitely other available moves.
+ * So castling is not needed to be checked.
+ */
 bool ChessBoard::mateCheck(int side)
 {
-    /*
-     * Castling is not considered as a valid movement here.
-     * But this does not influence the result.
-     * Because if the Castling is available,
-     * the two grid next to the king must be safe to move to.
-     * Thus, if Castling is available, there are definitely other available moves.
-     * So Castling is not needed to be checked.
-     */
+    // For all piece with the same side, check if there is a valid move (i.e. a valid destination) for it.
     Piece* p;
     for (int r = 0; r < ROW; r++)
         for (int c = 0; c < COL; c++)

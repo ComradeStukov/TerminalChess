@@ -1,3 +1,17 @@
+/***********************************************************************
+* Piece.h Declaration of different piece class for chess game          *
+*                                                                      *
+* This file is part of Terminal Chess.                                 *
+*                                                                      *
+* Copyright 2019-2020 SBofGaySchoolBuPaAnything                        *
+*                                                                      *
+* Terminal Chess is free software under LGPLv3.                        *
+*                                                                      *
+* You should have received a copy of the GNU Lesser General Public     *
+* License along with this program.  If not, see                        *
+* <http://www.gnu.org/licenses/>.                                      *
+***********************************************************************/
+
 #ifndef _PIECE_H_
 #define _PIECE_H_
 

@@ -1,3 +1,17 @@
+/***********************************************************************
+* ChessBoard.h Declaration of core class for chess simulation          *
+*                                                                      *
+* This file is part of Terminal Chess.                                 *
+*                                                                      *
+* Copyright 2019-2020 SBofGaySchoolBuPaAnything                        *
+*                                                                      *
+* Terminal Chess is free software under LGPLv3.                        *
+*                                                                      *
+* You should have received a copy of the GNU Lesser General Public     *
+* License along with this program.  If not, see                        *
+* <http://www.gnu.org/licenses/>.                                      *
+***********************************************************************/
+
 #ifndef _CHESS_BOARD_H_
 #define _CHESS_BOARD_H_
 
@@ -6,31 +20,6 @@
 
 #include "Piece.h"
 
-/*
-=====
-move(p, pos)
-=====
-
-piece_check(p, pos)
-make_the_move
-check_check(x)
-For all piece of 1-x:
-	if piece_check(that piece, king of x):
-	    true
-rollback_the_move
-
-=====
-judge(x)
-=====
-
-check_check(x)
-mate_check(x) :
-For all piece of x:
-    For all pos:
-	    if move(that piece, pos):
-		    true
-
-*/
 
 /**
  * Core class for chess game.
